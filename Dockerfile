@@ -14,10 +14,10 @@ RUN sudo apt-get install -qy \
 # Example:  
 #   [mycontroller:ubuntu/mymodel] ubuntu@6b20e0917e87:~$
 #
-ADD model-as-ps1.sh ~/model-as-ps1.sh
-ADD show-juju-env.sh ~/show-juju-env.sh
-ADD .juju_context.py ~/.juju_context.py
-RUN ~/model-as-ps1.sh
+ADD model-as-ps1.sh /home/ubuntu/model-as-ps1.sh
+ADD show-juju-env.sh /home/ubuntu/show-juju-env.sh
+ADD .juju_context.py /home/ubuntu/.juju_context.py
+RUN /home/ubuntu/model-as-ps1.sh
 
 # Eclipse Che workspace requires this command to never exit, hence the tail -f
 ENTRYPOINT sudo /usr/sbin/sshd -D && \
