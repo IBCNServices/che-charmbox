@@ -20,7 +20,6 @@ ADD .juju_context.py /home/ubuntu/.juju_context.py
 RUN /home/ubuntu/model-as-ps1.sh
 
 # Override juju- and charmbox env variables.
-RUN rm -rf $JUJU_REPOSITORY
 ENV JUJU_REPOSITORY /projects/charms
 ENV LAYER_PATH /projects/charms/layers
 ENV INTERFACE_PATH /projects/charms/interfaces
