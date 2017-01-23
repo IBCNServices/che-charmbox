@@ -32,7 +32,7 @@ RUN charm create -t reactive-python reactive-example $LAYER_PATH
 
 # set working directory to charms
 WORKDIR /projects/charms
-echo "echo Create your charms in /projects/charms" >> /home/ubuntu/.bashrc
+RUN echo "echo Create your charms in /projects/charms" >> /home/ubuntu/.bashrc
 
 
 # Eclipse Che workspace requires this command to never exit, hence the tail -f
