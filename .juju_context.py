@@ -9,11 +9,11 @@ JUJU_CONTROLLERS_YAML = os.path.join(JUJU_HOME, 'controllers.yaml')
 
 
 def parse_yaml_file(yaml_file):
-    with open(yaml_file, 'r') as f:
-        try:
+    try:
+        with open(yaml_file, 'r') as f:
             return yaml.load(f)
-        except yaml.YAMLError as exc:
-            print(exc)
+    except (FileNotFoundError, yaml.YAMLError) as exc:
+        return {}
 
 
 def get_current_controller():

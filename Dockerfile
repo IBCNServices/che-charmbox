@@ -19,7 +19,20 @@ ADD show-juju-env.sh /home/ubuntu/show-juju-env.sh
 ADD .juju_context.py /home/ubuntu/.juju_context.py
 RUN /home/ubuntu/model-as-ps1.sh
 
-ENV CHE_PROJECTS_ROOT=/home/ubuntu/charms
+# Override juju- and charmbox env variables.
+RUN rm -rf $JUJU_REPOSITORY
+ENV JUJU_REPOSITORY /projects/charms
+ENV LAYER_PATH /projects/charms/layers
+ENV INTERFACE_PATH /projects/charms/interfaces
+RUN mkdir -p $LAYER_PATH
+RUN mkdir -p $INTERFACE_PATH
+
+# Create example layer
+RUN charm create -t reactive-python reactive-example $LAYER_PATH
+
+# set working directory to charms
+WORKDIR /projects/charms
+RUN printf "\ncd /projects/charms\n" >> /home/ubuntu/.bashrc
 
 # Eclipse Che workspace requires this command to never exit, hence the tail -f
 ENTRYPOINT sudo /usr/sbin/sshd -D && \
