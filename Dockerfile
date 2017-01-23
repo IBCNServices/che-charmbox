@@ -19,6 +19,8 @@ ADD show-juju-env.sh /home/ubuntu/show-juju-env.sh
 ADD .juju_context.py /home/ubuntu/.juju_context.py
 RUN /home/ubuntu/model-as-ps1.sh
 
+ENV CHE_PROJECTS_ROOT=/home/ubuntu/charms
+
 # Eclipse Che workspace requires this command to never exit, hence the tail -f
 ENTRYPOINT sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
