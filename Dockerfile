@@ -23,15 +23,15 @@ RUN /home/ubuntu/model-as-ps1.sh
 ENV JUJU_REPOSITORY /projects/charms
 ENV LAYER_PATH /projects/charms/layers
 ENV INTERFACE_PATH /projects/charms/interfaces
-RUN sudo mkdir -p $LAYER_PATH
-RUN sudo mkdir -p $INTERFACE_PATH
-RUN sudo chown -R ubuntu:ubuntu /projects
+#RUN sudo mkdir -p $LAYER_PATH
+#RUN sudo mkdir -p $INTERFACE_PATH
+#RUN sudo chown -R ubuntu:ubuntu /projects
 
 # Create example layer
-RUN charm create -t reactive-python reactive-example $LAYER_PATH
+#RUN charm create -t reactive-python reactive-example $LAYER_PATH
 
 # set working directory to charms
-WORKDIR /projects/charms
+#WORKDIR /projects/charms
 RUN echo "echo Create your charms in /projects/charms" >> /home/ubuntu/.bashrc
 
 
