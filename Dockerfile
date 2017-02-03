@@ -30,10 +30,7 @@ ENV INTERFACE_PATH /projects/charms/interfaces
 # Create example layer
 #RUN charm create -t reactive-python reactive-example $LAYER_PATH
 
-# set working directory to charms
-#WORKDIR /projects/charms
-RUN echo "echo Create your charms in /projects/charms" >> /home/ubuntu/.bashrc
-
+WORKDIR /projects
 
 # Eclipse Che workspace requires this command to never exit, hence the tail -f
 ENTRYPOINT sudo /usr/sbin/sshd -D && \
